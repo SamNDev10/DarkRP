@@ -88,56 +88,6 @@ TEAM_GANG = DarkRP.createJob("Gangster", {
     category = "Gangsters",
 })
 
-TEAM_MOB = DarkRP.createJob("Mob boss", {
-    color = Color(25, 25, 25, 255),
-    model = "models/player/gman_high.mdl",
-    description = [[The Mob boss is the boss of the criminals in the city.
-        With their power they coordinate the gangsters and form an efficient crime organization.
-        They have the ability to break into houses by using a lockpick.
-        The Mob boss posesses the ability to unarrest you.]],
-    weapons = {"lockpick", "unarrest_stick"},
-    command = "mobboss",
-    max = 1,
-    salary = GAMEMODE.Config.normalsalary * 1.34,
-    admin = 0,
-    vote = false,
-    hasLicense = false,
-    category = "Gangsters",
-})
-
-TEAM_GUN = DarkRP.createJob("Gun Dealer", {
-    color = Color(255, 140, 0, 255),
-    model = "models/player/monk.mdl",
-    description = [[A Gun Dealer is the only person who can sell guns to other people.
-        Make sure you aren't caught selling illegal firearms to the public! You might get arrested!]],
-    weapons = {},
-    command = "gundealer",
-    max = 2,
-    salary = GAMEMODE.Config.normalsalary,
-    admin = 0,
-    vote = false,
-    hasLicense = false,
-    category = "Citizens",
-})
-
-TEAM_MEDIC = DarkRP.createJob("Medic", {
-    color = Color(47, 79, 79, 255),
-    model = "models/player/kleiner.mdl",
-    description = [[With your medical knowledge you work to restore players to full health.
-        Without a medic, people cannot be healed.
-        Left click with the Medical Kit to heal other players.
-        Right click with the Medical Kit to heal yourself.]],
-    weapons = {"med_kit"},
-    command = "medic",
-    max = 3,
-    salary = GAMEMODE.Config.normalsalary,
-    admin = 0,
-    vote = false,
-    hasLicense = false,
-    medic = true,
-    category = "Citizens",
-})
-
 TEAM_CHIEF = DarkRP.createJob("Civil Protection Chief", {
     color = Color(20, 20, 255, 255),
     model = "models/player/combine_soldier_prisonguard.mdl",
@@ -179,49 +129,11 @@ TEAM_MAYOR = DarkRP.createJob("Mayor", {
     max = 1,
     salary = GAMEMODE.Config.normalsalary * 1.89,
     admin = 0,
-    vote = true,
+    vote = false,
     hasLicense = false,
     mayor = true,
     category = "Civil Protection",
 })
-
-TEAM_HOBO = DarkRP.createJob("Hobo", {
-    color = Color(80, 45, 0, 255),
-    model = "models/player/corpse1.mdl",
-    description = [[The lowest member of society. Everybody laughs at you.
-        You have no home.
-        Beg for your food and money
-        Sing for everyone who passes to get money
-        Make your own wooden home somewhere in a corner or outside someone else's door]],
-    weapons = {"weapon_bugbait"},
-    command = "hobo",
-    max = 5,
-    salary = 0,
-    admin = 0,
-    vote = false,
-    hasLicense = false,
-    candemote = false,
-    hobo = true,
-    category = "Citizens",
-})
-
-if not DarkRP.disabledDefaults["modules"]["hungermod"] then
-    TEAM_COOK = DarkRP.createJob("Cook", {
-        color = Color(238, 99, 99, 255),
-        model = "models/player/mossman.mdl",
-        description = [[As a cook, it is your responsibility to feed the other members of your city.
-            You can spawn a microwave and sell the food you make:
-            /buymicrowave]],
-        weapons = {},
-        command = "cook",
-        max = 2,
-        salary = 45,
-        admin = 0,
-        vote = false,
-        hasLicense = false,
-        cook = true
-    })
-end
 
 -- Compatibility for when default teams are disabled
 TEAM_CITIZEN = TEAM_CITIZEN  or -1
@@ -239,11 +151,6 @@ TEAM_COOK    = TEAM_COOK     or -1
 AddDoorGroup("Cops and Mayor only", TEAM_CHIEF, TEAM_POLICE, TEAM_MAYOR)
 AddDoorGroup("Gundealer only", TEAM_GUN)
 
-
--- Agendas
-DarkRP.createAgenda("Gangster's agenda", TEAM_MOB, {TEAM_GANG})
-DarkRP.createAgenda("Police agenda", {TEAM_MAYOR, TEAM_CHIEF}, {TEAM_POLICE})
-
 -- Group chats
 DarkRP.createGroupChat(function(ply) return ply:isCP() end)
 DarkRP.createGroupChat(TEAM_MOB, TEAM_GANG)
@@ -259,12 +166,9 @@ GAMEMODE.CivilProtection = {
     [TEAM_MAYOR] = true,
 }
 
--- Hitman team
-DarkRP.addHitmanTeam(TEAM_MOB)
-
 -- Demote groups
 DarkRP.createDemoteGroup("Cops", {TEAM_POLICE, TEAM_CHIEF})
-DarkRP.createDemoteGroup("Gangsters", {TEAM_GANG, TEAM_MOB})
+DarkRP.createDemoteGroup("Gangsters", {TEAM_GANG})
 
 -- Default categories
 DarkRP.createCategory{
