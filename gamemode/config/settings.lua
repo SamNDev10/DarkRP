@@ -373,9 +373,7 @@ GM.Config.DisallowDrop = {
 GM.Config.DefaultWeapons = {
     "keys",
     "weapon_physcannon",
-    "gmod_camera",
     "gmod_tool",
-    "pocket",
     "weapon_physgun",
 }
 
@@ -504,37 +502,3 @@ GM.Config.hideNonBuyable = false
 -- When you set this option to true and hideNonBuyable to false, you WILL see e.g. items that are too expensive for you to buy.
 -- but you won't see gundealer shipments when you have the citizen job.
 GM.Config.hideTeamUnbuyable = true
-
---[[---------------------------------------------------------------------------
-AFK module
----------------------------------------------------------------------------]]
--- The time of inactivity before being demoted.
-GM.Config.afkdemotetime = 600
--- Prevent people from spamming AFK.
-GM.Config.AFKDelay = 300
-
---[[---------------------------------------------------------------------------
-Hitmenu module
----------------------------------------------------------------------------]]
--- The minimum price for a hit.
-GM.Config.minHitPrice = 200
--- The maximum price for a hit.
-GM.Config.maxHitPrice = 50000
--- The minimum distance between a hitman and his customer when they make the deal.
-GM.Config.minHitDistance = 150
--- The text that tells the player he can press use on the hitman to request a hit.
-GM.Config.hudText = "I am a hitman.\nPress E on me to request a hit!"
--- The text above a hitman when he's got a hit.
-GM.Config.hitmanText = "Hit\naccepted!"
--- The cooldown time for a hit target (so they aren't spam killed).
-GM.Config.hitTargetCooldown = 120
--- How long a customer has to wait to be able to buy another hit (from the moment the hit is accepted).
-GM.Config.hitCustomerCooldown = 240
-
---[[---------------------------------------------------------------------------
-Hungermod module
----------------------------------------------------------------------------]]
--- hungerspeed <Amount> - Set the rate at which players will become hungry (2 is the default).
-GM.Config.hungerspeed = 2
--- starverate <Amount> - How much health that is taken away every second the player is starving  (3 is the default).
-GM.Config.starverate = 3
